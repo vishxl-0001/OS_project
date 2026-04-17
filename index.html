@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CPU Scheduling Simulator</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">Operating Systems Project</div>
+    <h1>CPU Scheduling Simulator</h1>
+    <p>Visualize and compare scheduling algorithms with real-time Gantt charts</p>
+    <div class="algo-pills">
+      <span class="algo-pill blue">FCFS</span>
+      <span class="algo-pill teal">SJF</span>
+      <span class="algo-pill amber">Round Robin</span>
+      <span class="algo-pill pink">Priority</span>
+    </div>
+  </div>
+
+  <!-- Process Input Panel -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">Process Configuration</div>
+      <button class="btn btn-secondary" onclick="addProcess()" id="add-btn">+ Add Process</button>
+    </div>
+    <div class="process-grid" id="proc-grid"></div>
+    <div id="legend-wrap"></div>
+  </div>
+
+  <!-- Controls Panel -->
+  <div class="panel" style="padding: 1.25rem 1.5rem;">
+    <div class="btn-row">
+      <div class="quantum-group">
+        <span>RR Quantum</span>
+        <input type="number" id="quantum" value="3" min="1" max="20">
+        <span style="color:var(--text3);">ms</span>
+      </div>
+      <button class="btn btn-primary" onclick="runAll()">&#9654; Run Simulation</button>
+      <button class="btn btn-secondary" onclick="resetAll()">&#8634; Reset</button>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="results-wrap" id="results-wrap" style="display:none;">
+
+    <!-- Per-algorithm Gantt + stats -->
+    <div id="algo-results"></div>
+
+    <!-- Comparison Table -->
+    <div class="compare-panel" id="compare-panel">
+      <div class="panel-title">Algorithm Comparison</div>
+      <table class="cmp-table" id="cmp-table">
+        <thead><tr>
+          <th>Algorithm</th>
+          <th>Avg Waiting Time</th>
+          <th>Avg Turnaround</th>
+          <th>Makespan</th>
+        </tr></thead>
+        <tbody id="cmp-body"></tbody>
+      </table>
+      <div class="winner-row" id="winners"></div>
+    </div>
+
+  </div>
+
+  <footer>CPU Scheduling Simulator &nbsp;&middot;&nbsp; Operating Systems Project &nbsp;&middot;&nbsp; Built with HTML / CSS / JS</footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
